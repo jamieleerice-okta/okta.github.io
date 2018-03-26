@@ -278,7 +278,6 @@ You can modify the look of the initial login screen using parameters in the `con
 **Logo**
 
 ~~~javascript
-// Basic example
 var config = {
   …
   logo: '/path/to/logo.png',
@@ -288,34 +287,9 @@ var config = {
 var signIn = new OktaSignIn(config);
 ~~~
 
-**Links**
-
-You can change the "Help", "Forgot Password", and "Unlock" links, including both their text and URLs.
-
-~~~javascript
-var config = {
-    …
-  helpLinks: {
-    help: 'https://acme.com/help',
-    forgotPassword: 'https://acme.com/forgot-password',
-    unlock: 'https://acme.com/unlock-account',
-    custom: [
-    {
-      text: 'What is Okta?',
-      href: 'https://acme.com/what-is-okta'
-    },
-    {
-      text: 'Acme Portal',
-      href: 'https://acme.com'
-    }
-    ]
-  }
-};
-~~~
-
 **Custom Buttons**
 
-You can also add buttons below the "Sign In" button.
+You can add buttons below the "Sign In" button.
 
 ~~~javascript
 var config = {
@@ -340,28 +314,53 @@ var config = {
 };
 ~~~
 
+**Links**
+
+You can also change the "Help", "Forgot Password", and "Unlock" links, including both their text and URLs.
+
+~~~javascript
+var config = {
+    …
+  helpLinks: {
+    help: 'https://acme.com/help',
+    forgotPassword: 'https://acme.com/forgot-password',
+    unlock: 'https://acme.com/unlock-account',
+    custom: [
+    {
+      text: 'What is Okta?',
+      href: 'https://acme.com/what-is-okta'
+    },
+    {
+      text: 'Acme Portal',
+      href: 'https://acme.com'
+    }
+    ]
+  }
+};
+~~~
+
 #### Modifying CSS
 
 In addition to the parameters in the Widget's `config`, you can also modify the CSS.
 
 **Modify the existing theme**
 
-If you want to add on top of okta theme, just edit https://github.com/okta/okta-signin-widget/blob/master/assets/sass/okta-theme.scss and add any CSS to the bottom of the file.
-If you want to add on top of base theme, edit https://github.com/okta/okta-signin-widget/blob/master/assets/sass/okta-sign-in.scss and add any CSS to the bottom of the file.
+If you want to add on top of the Okta theme, just edit [okta-theme.scss](https://github.com/okta/okta-signin-widget/blob/master/assets/sass/okta-theme.scss) and add any CSS to the bottom of the file.
+If you want to add on top of the base theme, edit [okta-sign-in.scss](https://github.com/okta/okta-signin-widget/blob/master/assets/sass/okta-sign-in.scss) and add any CSS to the bottom of the file.
 
 **Create a new theme**
 
 If you'd like to create an entirely new theme:
 
-1. Add a new SCSS file here: <https://github.com/okta/okta-signin-widget/tree/master/assets/sass>.
+1. Add a new SCSS file to [assets/sass](https://github.com/okta/okta-signin-widget/tree/master/assets/sass) folder.
 
-2. If your SCSS file is called `custom-theme.scss`, add
+2. If your SCSS file is called, for example, `custom-theme.scss`, add
 
 `<link href="css/custom-theme.css" type="text/css" rel="stylesheet"/>`
 
-as the last CSS to <https://github.com/okta/okta-signin-widget/blob/master/buildtools/templates/index.tpl>
+as the last CSS to [index.tpl](https://github.com/okta/okta-signin-widget/blob/master/buildtools/templates/index.tpl).
 
-3. Finally, modify all occurrences of `okta-theme` to `custom-theme` in <https://github.com/okta/okta-signin-widget/blob/master/Gruntfile.js>
+3. Finally, modify all occurrences of `okta-theme` to `custom-theme` in [Gruntfile.js](https://github.com/okta/okta-signin-widget/blob/master/Gruntfile.js).
 
 ##### CSS customization examples
 
