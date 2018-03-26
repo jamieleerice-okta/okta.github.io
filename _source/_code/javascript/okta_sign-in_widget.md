@@ -409,32 +409,10 @@ All text:
 
 Link text:
 
-In the simple example above, you already performed the following steps:
-
-1.  Created an HTML file with the widget code
-2.  Modified the HTML to use your Okta organization
-3.  Served the HTML file with a web server
-4.  Configured a Trusted Origin in your Okta organization
-
-In that example, you redirect the user to their administrator UI (as defined in the `orgUrl` variable). Now you will configure a redirect to a custom authentication landing page hosted on your server.
-
-To do this, you will now perform the following steps:
-
-1. Create a landing page
-2. Add a redirect URL variable to the widget
-3. Update the post-authentication behavior of the widget
-4. Configure redirects in your Okta organization
-
-#### Create the landing page
-
-The first step will be to create the landing page that the user will be redirected to after authentication. For this example, you should create the file in the same directory as your existing sign-in page, and name it something like `signed-in.html`. You can add any content you might like to your landing page.
-
-#### Add a Redirect URL
-
-There are just two lines you will need to modify in your widget code to get the sample working in your own environment. Under the line where you specify the fully-qualified domain name for your Okta org, add the following line:
-
-~~~ javascript
-  var redirectUrl = 'http://localhost:3333/signed-in.html';
+~~~css
+#okta-sign-in a:link {
+	color: red;
+}
 ~~~
 
 **Widget positioning + width**
@@ -519,37 +497,3 @@ var config = {
 ...
 };
 ~~~
-
-
-#### Examples
-
-
-
-
-Also, note that we only define a "SUCCESS" callback in which we create an Okta session and redirect the browser to the Okta organization. This logs the user directly into the administrator UI. In a production environment, you should handle statuses beyond "SUCCESS" and define an "ERROR" callback as well.
-
-Examples of common labels that you might want to change: Username, password, remember me, sign in button, need help, help, forgot password, bad creds error message, please enter username/password labels - whatever you see when you load the widget up
-
-common error strings for customization?:
-https://github.com/okta/okta-signin-widget/blob/master/packages/@okta/i18n/dist/properties/login.properties
-
-```
-error.username.required = Please enter a username
-error.password.required = Please enter a password
-errors.E0000004 = Sign in failed!
-```
-
-~~~ javascript
-var oktaSignIn = new OktaSignIn({
-...
-  labels: {
-    'primaryauth.title': 'Acme Partner Login',
-    'primaryauth.username': 'Partner ID',
-    'primaryauth.username.tooltip': 'Enter your @ partner.com ID',
-    'primaryauth.password': 'Password',
-    'primaryauth.password.tooltip': 'Super secret password'
-  }
-});
-~~~
-
-For more information about these configuration options, see the [Okta Sign-In Widget Reference page][widget-reference].
